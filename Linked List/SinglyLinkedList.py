@@ -90,6 +90,8 @@ class LinkedList:
       count+=1
 
   def insert_after_value(self, data_after, data_to_insert):
+    if self.head is None:
+      return
 
     itr = self.head
     while itr:
@@ -100,6 +102,8 @@ class LinkedList:
       itr = itr.next
 
   def remove_by_value(self, data):
+    if self.head is None:
+      return
 
     itr = self.head
     count = 0
