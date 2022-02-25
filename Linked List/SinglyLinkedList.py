@@ -62,11 +62,12 @@ class LinkedList:
     idxCount = 0
 
     while itr:
-      itr = itr.next
       
-      if idxCount == index:
+      
+      if idxCount == index - 1:
         itr.next = itr.next.next
         break
+      itr = itr.next
       idxCount+=1
   def insert_at(self, data, pos):
 
@@ -87,6 +88,33 @@ class LinkedList:
 
       itr = itr.next
       count+=1
+
+  def insert_after_value(self, data_after, data_to_insert):
+
+    itr = self.head
+    while itr:
+      if itr.data == data_after:
+        node = Node(data_to_insert, itr.next)
+        itr.next = node
+        break
+      itr = itr.next
+
+  def remove_by_value(self, data):
+
+    itr = self.head
+    count = 0
+
+    while itr:
+      if itr.data == data:
+        print(count, "adsad \n")
+        self.remove_at(count)
+        break
+      itr = itr.next
+      count+=1
+
+
+    
+    
       
       
 if __name__ == "__main__":
@@ -120,6 +148,22 @@ if __name__ == "__main__":
 
   ll.insert_at("Uttam",1)
   ll.insert_at("Priti",4)
+
+  ll.print()
+  count = ll.get_length()
+  print(f"Linked List length: {count}\n")
+
+  ll.insert_after_value("Suraj","Ujwal")
+  ll.insert_after_value("Priti","Jyoti")
+  ll.insert_after_value("Chandan","Mishra")
+
+
+  ll.print()
+  count = ll.get_length()
+  print(f"Linked List length: {count}\n")
+
+  ll.remove_by_value("Mishra")
+  ll.remove_by_value("Uttam")
 
   ll.print()
   count = ll.get_length()
